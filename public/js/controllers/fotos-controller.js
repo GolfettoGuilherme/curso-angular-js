@@ -1,0 +1,24 @@
+//informando qual modulo vou usar 
+angular.module('alurapic').controller('FotosController', function($scope, $http){
+
+	$scope.fotos  = [];
+
+	$scope.filtro = '';
+
+	// var promise = $http.get('v1/fotos');
+	// promise.then(function(retorno){
+	// 	//calback no bom
+	// 	$scope.fotos = retorno.data;
+	// }).catch(function(error){
+	// 	//callback no ruim
+	// 	console.log(error);
+	// });
+
+	$http.get('v1/fotos')
+	.success(function(fotos){
+		$scope.fotos = fotos;
+	})
+	.error(function(erro){
+		console.log(erro);
+	});
+});
